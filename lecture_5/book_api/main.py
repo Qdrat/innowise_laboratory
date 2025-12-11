@@ -146,9 +146,9 @@ async def search_books(
 
     # Apply filters if parameters are provided
     if title:
-        query = query.filter(models.Book.title.contains(title))
+        query = query.filter(models.Book.title.ilike(f"%{title}%"))
     if author:
-        query = query.filter(models.Book.author.contains(author))
+        query = query.filter(models.Book.author.ilike(f"%{author}%"))
     if year:
         query = query.filter(year == models.Book.year)
 
